@@ -1,11 +1,16 @@
 import React from 'react';
 
+import { Provider } from 'react-redux';
+
+import Catalog from './Components/Catalog';
+
+import store from './store'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <Provider store={store}>
+      <Catalog />
+    </Provider>
   );
 }
 
