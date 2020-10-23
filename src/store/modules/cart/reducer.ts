@@ -24,9 +24,6 @@ const cart: Reducer<ICartState> = (state = INITITAL_STATE, action) => {
               quantity: 1,
             });
           }
-
-        
-
         break;
       }
       default : {
