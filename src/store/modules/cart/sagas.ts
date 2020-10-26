@@ -1,8 +1,18 @@
-import { all, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest, select } from 'redux-saga/effects';
+import { IState } from '../..';
+import { addProductToCart } from './actions';
 
+type CheckProductStockRequest = ReturnType<typeof addProductToCart>
 
-function checkProductStock() {
-  console.log('add ao carrinho')
+function* checkProductStock({ payload }: CheckProductStockRequest) {
+  const { product } = payload;
+
+  const currentQuantity: number = yield select((state: IState) => {
+    return state.cart.items.find(item => item.product.id === product.id)?.quantity ?? 0;
+  });  
+  console.log(currentQuantity);
+
+  console.log('add ao carrinho');
 }
 
 export default all([
